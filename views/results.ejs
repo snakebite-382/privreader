@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Results - <%= results.source %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div>
+    <header class="container">
+      <h1>Analysis Results</h1>
+      <h2><%= results.source %></h2>
+      <p>Analyzed on <%= new Date(results.date).toLocaleDateString() %></p>
+      <div class="header-actions">
+        <a href="/" class="button">Analyze Another</a>
+        <a href="/download/<%= resultID %>" class="button" download>Download JSON</a>
+      </div>
+    </header>
+
+      <aside class="summary-panel container">
+        <h2>Summary of Findings</h2>
+        <% 
+          const findingsByCategory = {};
+          results.chunks.forEach((chunk, chunkIndex) => {
+            for(const ref of chunk.references){
+              if (!findingsByCategory[ref.category]) {
+                findingsByCategory[ref.category] = [];
+              }
+              // Check if this finding already exists
+              const existing = findingsByCategory[ref.category].find(f => f.id === ref.id);
+
+              if (existing) {
+                existing.chunkIndices.push(chunkIndex);
+                if (ref.confidence === 'low') existing.confidence = 'low';
+              } else {
+                findingsByCategory[ref.category].push({
+                  ...ref,
+                  chunkIndices: [chunkIndex]
+                });
+              }
+            }
+          });
+        %>
+        
+        <% if (Object.keys(findingsByCategory).length === 0) { %>
+          <div class="no-findings">
+            <p>No recognized patterns found in this policy. This doesn't mean the policy has no potentially concerning language in it or privacy concerns, rather it means the policy is written in a way this software does not understand</p>
+          </div>
+        <% } else { %>
+          <% Object.keys(findingsByCategory).forEach(category => { %>
+            <div class="category-section">
+              <h3 class="category-title">
+                 <%= category %>
+              </h3>
+              
+              <% findingsByCategory[category].forEach(finding => { %>
+                <div class="finding-card container severity-<%= finding.severity %>">
+                  <div class="finding-header">
+                    <span class="severity-badge <%= finding.severity %>">
+                      <% if (finding.severity === 'critical') { %>🔴
+                      <% } else if (finding.severity === 'high') { %>🟠
+                      <% } else if (finding.severity === 'medium') { %>🟡
+                      <% } else if (finding.severity === 'positive') { %>🟢
+                      <% } else { %>⚪
+                      <% } %>
+                    </span>
+                    <% if (finding.confidence === 'low') { %>
+                      <span class="warning">Low Confidence</span>
+                    <% } %>
+                  </div>
+                  
+                  <h2 class="finding-description"><%= finding.description %></h2>
+                  
+                  <div class="finding-actions">
+                    <% finding.chunkIndices.forEach(chunkIndex => { %>
+                      <a href="#chunk_<%= chunkIndex %>" class="jump-link button">View in Document</a>
+                    <% }) %>
+                    <a href="<%= finding.source_url %>" target="_blank" class="source-link button">Learn more</a>
+                  </div>
+                  
+                </div>
+              <% }) %>
+            </div>
+          <% }) %>
+        <% } %>
+        
+        <div class="legend">
+          <h2>Severity Guide</h2>
+          <ul>
+            <li>🔴 <strong>Critical</strong> - Significant privacy concern</li>
+            <li>🟠 <strong>High</strong> - Potenti ally dangerous</li>
+            <li>🟡 <strong>Medium</strong> - Worth noting</li>
+            <li>🟢 <strong>Positive</strong> - Privacy, or user-friendly feature</li>
+            <li>⚪ <strong>Low</strong> - Minor note</li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Original Document Panel -->
+      <section class="document-panel container">
+        <h2>Original Document</h2>
+        
+        <div class="document-content">
+          <% results.chunks.forEach((chunk, index) => { %>
+            <div 
+              id="chunk_<%= index %>" 
+              class="chunk <%= chunk.references.length > 0 ? 'highlighted' : '' %>"
+            >
+              <%= chunk.text %>
+              
+              <% if (chunk.references.length > 0) { %>
+                <div class="chunk-annotations">
+                  <% chunk.references.forEach(ref => { %>
+                    <span class="annotation-tag">
+                       <%= ref.category %>
+                    </span>
+                  <% }) %>
+                </div>
+              <% } %>
+            </div>
+          <% }) %>
+        </div>
+      </section>
+  </div>
+  <script>
+    document.querySelectorAll('.jump-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,402 @@
+{
+  "patterns": [
+    {
+      "id": "location_data",
+      "category": "Data Collection",
+      "triggers": [
+        "location data",
+        "geographic information",
+        "gps coordinates",
+        "geolocation",
+        "precise location"
+      ],
+      "description": "The service collects your location data",
+      "severity": "medium",
+      "source_title": "EFF: Location Tracking Guide",
+      "source_url": "https://www.eff.org/issues/location-privacy"
+    },
+    {
+      "id": "browsing_history",
+      "category": "Data Collection",
+      "triggers": [
+        "browsing history",
+        "websites you visit",
+        "pages you view",
+        "navigation data",
+        "page views"
+      ],
+      "description": "The service collects your browsing history",
+      "severity": "medium",
+      "source_title": "UK Norton: Who can see my search history, and how can I keep it private",
+      "source_url": "https://privacyrights.org/consumer-guides/online-privacy-using-internet-safely"
+    },
+    {
+      "id": "cookies_tracking",
+      "category": "Data Collection",
+      "triggers": [
+        "cookies",
+        "tracking pixels",
+        "web beacons",
+        "tracking technologies",
+        "similar technologies"
+      ],
+      "description": "The service uses cookies or tracking technologies",
+      "severity": "low",
+      "source_title": "All About Cookies",
+      "source_url": "https://www.allaboutcookies.org"
+    },
+    {
+      "id": "device_information",
+      "category": "Data Collection",
+      "triggers": [
+        "device information",
+        "device identifiers",
+        "device type",
+        "operating system",
+        "unique device"
+      ],
+      "description": "The service collects information about your device",
+      "severity": "low",
+      "source_title": "Privacy.ca.gov: Understanding Mobile App Tracking and How to Limit It",
+      "source_url": "https://privacy.ca.gov/2025/09/limit-mobile-app-tracking/"
+    },
+    {
+      "id": "ip_address",
+      "category": "Data Collection",
+      "triggers": [
+        "ip address",
+        "internet protocol address",
+        "network identifier"
+      ],
+      "description": "The service collects your IP address",
+      "severity": "low",
+      "source_title": "Geeks for Geeks: What is an IP Address",
+      "source_url": "https://www.geeksforgeeks.org/computer-science-fundamentals/what-is-an-ip-address/"
+    },
+    {
+      "id": "third_party_sharing",
+      "category": "Data Sharing",
+      "triggers": [
+        "share.*with.*third parties",
+        "share.*with.*partners",
+        "disclose.*to.*vendors",
+        "third-party partners",
+        "share.*information.*with"
+      ],
+      "description": "Your data may be shared with third parties or partners",
+      "severity": "high",
+      "source_title": "Studen Privacy (Department of Education): Privacy and Data Sharing",
+      "source_url": "https://studentprivacy.ed.gov/privacy-and-data-sharing"
+    },
+    {
+      "id": "data_selling",
+      "category": "Data Sharing",
+      "triggers": [
+        "sell.*information",
+        "sell.*data",
+        "monetize.*data",
+        "selling.*personal"
+      ],
+      "description": "The service may sell your personal data",
+      "severity": "critical",
+      "source_title": "Usercentrics: Data Selling 101",
+      "source_url": "https://usercentrics.com/knowledge-hub/data-is-the-new-gold-how-and-why-it-is-collected-and-sold/"
+    },
+    {
+      "id": "advertising_purposes",
+      "category": "Data Sharing",
+      "triggers": [
+        "advertising purposes",
+        "targeted advertising",
+        "personalized ads",
+        "marketing purposes",
+        "ad targeting"
+      ],
+      "description": "Your data is used for advertising or marketing",
+      "severity": "medium",
+      "source_title": "User Centrics: Privacy-Led Marketing",
+      "source_url": "https://usercentrics.com/guides/privacy-led-marketing/"
+    },
+    {
+      "id": "law_enforcement",
+      "category": "Data Sharing",
+      "triggers": [
+        "law enforcement",
+        "legal request",
+        "court order",
+        "government request",
+        "comply.*legal"
+      ],
+      "description": "Data may be shared with law enforcement or government",
+      "severity": "medium",
+      "source_title": "EFF: Legal Guide",
+      "source_url": "https://www.eff.org/issues/know-your-rights"
+    },
+    {
+      "id": "international_transfer",
+      "category": "Data Sharing",
+      "triggers": [
+        "international transfer",
+        "transfer.*outside",
+        "global operations",
+        "other countries",
+        "cross-border"
+      ],
+      "description": "Your data may be transferred internationally",
+      "severity": "medium",
+      "source_title": "GDPR: International Transfers",
+      "source_url": "https://gdpr-info.eu"
+    },
+    {
+      "id": "right_to_delete",
+      "category": "User Rights",
+      "triggers": [
+        "delete.*data",
+        "right to deletion",
+        "erase.*information",
+        "remove.*data",
+        "right to erasure"
+      ],
+      "description": "You have the right to request deletion of your data",
+      "severity": "positive",
+      "source_title": "GDPR: Right to Erasure",
+      "source_url": "https://gdpr-info.eu/art-17-gdpr"
+    },
+    {
+      "id": "right_to_access",
+      "category": "User Rights",
+      "triggers": [
+        "access.*data",
+        "right to access",
+        "view.*information",
+        "request.*copy"
+      ],
+      "description": "You can request access to your personal data",
+      "severity": "positive",
+      "source_title": "GDPR: Right to Access",
+      "source_url": "https://gdpr-info.eu/art-15-gdpr"
+    },
+    {
+      "id": "opt_out",
+      "category": "User Rights",
+      "triggers": [
+        "opt-out",
+        "opt out",
+        "unsubscribe",
+        "refuse",
+        "decline"
+      ],
+      "description": "You can opt-out of certain data practices",
+      "severity": "positive",
+      "source_title": "CCPA: Opt-Out Rights",
+      "source_url": "https://oag.ca.gov/privacy/ccpa"
+    },
+    {
+      "id": "account_deletion",
+      "category": "User Rights",
+      "triggers": [
+        "delete.*account",
+        "close.*account",
+        "terminate.*account",
+        "deactivate.*account"
+      ],
+      "description": "You can delete your account",
+      "severity": "positive",
+      "source_title": "CCPA: Opt-Out Rights",
+      "source_url": "https://oag.ca.gov/privacy/ccpa"
+    },
+    {
+      "id": "data_portability",
+      "category": "User Rights",
+      "triggers": [
+        "data portability",
+        "download.*data",
+        "export.*data",
+        "transfer.*data"
+      ],
+      "description": "You can download or transfer your data",
+      "severity": "positive",
+      "source_title": "GDPR: Data Portability",
+      "source_url": "https://gdpr-info.eu/art-20-gdpr"
+    },
+    {
+      "id": "indefinite_retention",
+      "category": "Data Retention",
+      "triggers": [
+        "retain.*indefinitely",
+        "keep.*indefinitely",
+        "permanent",
+        "as long as.*necessary"
+      ],
+      "description": "Data may be retained indefinitely",
+      "severity": "high",
+      "source_title": "CCPA: Opt-Out Rights",
+      "source_url": "https://oag.ca.gov/privacy/ccpa"
+    },
+    {
+      "id": "retention_period",
+      "category": "Data Retention",
+      "triggers": [
+        "retention period",
+        "keep.*for.*years",
+        "store.*for.*months",
+        "retain.*for"
+      ],
+      "description": "Describes how long your data is retained",
+      "severity": "medium",
+      "source_title": "Data Retention Best Practices",
+      "source_url": "https://iapp.org"
+    },
+    {
+      "id": "after_deletion",
+      "category": "Data Retention",
+      "triggers": [
+        "after.*deletion",
+        "after.*you.*delete",
+        "remain.*after",
+        "backup.*copies"
+      ],
+      "description": "Data may persist after account deletion",
+      "severity": "medium",
+      "source_title": "Data Retention Guidelines",
+      "source_url": "https://iapp.org"
+    },
+    {
+      "id": "children_privacy",
+      "category": "Special Protections",
+      "triggers": [
+        "children",
+        "under.*13",
+        "under.*age",
+        "minors",
+        "coppa"
+      ],
+      "description": "Special provisions for children's privacy",
+      "severity": "low",
+      "source_title": "COPPA - Children's Online Privacy",
+      "source_url": "https://www.ftc.gov/legal-library/browse/rules/childrens-online-privacy-protection-rule-coppa"
+    },
+    {
+      "id": "gdpr_compliance",
+      "category": "Special Protections",
+      "triggers": [
+        "gdpr",
+        "general data protection regulation",
+        "european.*regulation",
+        "eu.*privacy"
+      ],
+      "description": "Indicates GDPR compliance for EU users",
+      "severity": "positive",
+      "source_title": "GDPR Official Text",
+      "source_url": "https://gdpr-info.eu"
+    },
+    {
+      "id": "ccpa_compliance",
+      "category": "Special Protections",
+      "triggers": [
+        "ccpa",
+        "california consumer privacy act",
+        "california.*residents",
+        "california.*privacy"
+      ],
+      "description": "Indicates CCPA compliance for California users",
+      "severity": "positive",
+      "source_title": "CCPA Official Guide",
+      "source_url": "https://oag.ca.gov/privacy/ccpa"
+    },
+    {
+      "id": "email_marketing",
+      "category": "Communications",
+      "triggers": [
+        "marketing emails",
+        "promotional.*email",
+        "newsletter",
+        "email.*communication"
+      ],
+      "description": "You may receive marketing emails",
+      "severity": "low",
+      "source_title": "CAN-SPAM Act",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+    },
+    {
+      "id": "unsubscribe",
+      "category": "Communications",
+      "triggers": [
+        "unsubscribe",
+        "opt.*out.*email",
+        "stop.*receiving",
+        "email.*preferences"
+      ],
+      "description": "You can unsubscribe from communications",
+      "severity": "positive",
+      "source_title": "Email Opt-Out Rights",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business"
+    },
+    {
+      "id": "encryption",
+      "category": "Security",
+      "triggers": [
+        "encryption",
+        "encrypted",
+        "secure.*transmission",
+        "ssl",
+        "tls"
+      ],
+      "description": "Data is protected with encryption",
+      "severity": "positive",
+      "source_title": "CISA: Encryption Best Practices",
+      "source_url": "https://www.cisa.gov/encryption"
+    },
+    {
+      "id": "security_measures",
+      "category": "Security",
+      "triggers": [
+        "security measures",
+        "protect.*data",
+        "safeguards",
+        "security.*practices"
+      ],
+      "description": "Security measures are in place to protect your data",
+      "severity": "positive",
+      "source_title": "CISA: Cybersecurity Best Practices",
+      "source_url": "https://www.cisa.gov/topics/cybersecurity-best-practices"
+    },
+    {
+      "id": "breach_notification",
+      "category": "Security",
+      "triggers": [
+        "data breach",
+        "security.*breach",
+        "notify.*breach",
+        "breach.*notification"
+      ],
+      "description": "You will be notified in case of a data breach",
+      "severity": "positive",
+      "source_title": "FTC: Data Breach Response",
+      "source_url": "https://www.ftc.gov/business-guidance/resources/data-breach-response-guide-business"
+    }
+  ],
+  "categories": {
+    "Data Collection": {
+      "description": "Information about what data is collected"
+    },
+    "Data Sharing": {
+      "description": "How your data is shared with others"
+    },
+    "User Rights": {
+      "description": "Your rights regarding your data"
+    },
+    "Data Retention": {
+      "description": "How long data is kept"
+    },
+    "Special Protections": {
+      "description": "Special privacy protections and compliance"
+    },
+    "Communications": {
+      "description": "Email and marketing communications"
+    },
+    "Security": {
+      "description": "Data security measures"
+    }
+  }
+}

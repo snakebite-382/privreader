@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PrivReader</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div id="wrapper">
+      <header class="container">
+        <h1>PrivReader</h1>
+        <p class="subtitle">
+            A tool to summarize privacy policies. No AI, yes citations.
+        </p>
+      </header>
+
+      <div class="container" id="info-box">
+        <h2>How it works:</h2> 
+        <p>This tool uses a plain json file with common language patterns from privacy policies, short descriptions on what they might mean and sources to learn more.
+        When you submit a privacy policy it is broken into chunks of a couple sentences, those sentences are then checked for the lanugauge in the reference file, and tagged appropriately. Results are stored in a json file which you can download, and made easily navigatable in the interface.</p>
+        <p class="warning">
+          <strong>Important:</strong> This tool is meant to help you navigate privacy policies, 
+          not replace reading them. It identifies common patterns but might miss context or nuance. 
+          Always read the full policy for complete understanding.
+        </p>
+      </div>
+
+      <form action="/analyze" method="POST" class="container" id="analysis-form">
+        <div class="form-group">
+          <label for="source">Policy Source</label>
+          <input 
+            type="text" 
+            id="source" 
+            name="source" 
+            required
+            placeholder="e.g. Facebook"
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="policy">Paste Privacy Policy Text</label>
+          <textarea 
+            id="policy" 
+            name="policy" 
+            rows="15" 
+            required
+            placeholder="Copy and paste the privacy policy text here..."
+          ></textarea>
+        </div>
+
+        <button type="submit" class="analyze-button">Analyze Policy</button>
+      </form>
+    </div>
+
+    <script>
+    const textarea = document.getElementById('policy');
+    const form = document.querySelector('.analysis-form');
+    
+    form.addEventListener('submit', (e) => {
+      const text = textarea.value.trim();
+      if (text.length < 100) {
+        e.preventDefault();
+        alert('Please paste at least 100 characters');
+      }
+    });
+    </script>
+</body>
+</html>
